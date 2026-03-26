@@ -14,7 +14,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [submittedTicker, setSubmittedTicker] = useState("");
 
-  const API_BASE = import.meta.env.VITE_API_BASE_URL;
+  const API_BASE = "https://stockchercher.onrender.com";
 
   const fetchStock = () => {
     if (!ticker.trim()) {
