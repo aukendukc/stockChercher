@@ -14,6 +14,8 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [submittedTicker, setSubmittedTicker] = useState("");
 
+  const API_BASE = import.meta.env.VITE_API_BASE_URL;
+
   const fetchStock = () => {
     if (!ticker.trim()) {
       setError("銘柄コードを入力してください。");
@@ -27,7 +29,7 @@ function App() {
     setData(null);
     setSubmittedTicker(upperTicker);
 
-    fetch(`http://localhost:8000/stock/${upperTicker}`)
+    fetch(`${API_BASE}/stock/${upperTicker}`)
       .then((res) => {
         if (!res.ok) {
           throw new Error("Failed to fetch stock data");
@@ -101,7 +103,7 @@ function App() {
             <div className="chart-frame">
               <img
                 className="chart-image"
-                src={`http://localhost:8000/stock/${submittedTicker}/plot`}
+                src={`${API_BASE}/stock/${submittedTicker}/plot`}
                 alt={`${submittedTicker} stock chart`}
               />
             </div>
